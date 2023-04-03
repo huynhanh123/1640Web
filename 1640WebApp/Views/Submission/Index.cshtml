@@ -7,26 +7,41 @@
     Layout = "_Layout";
 }
 <style>
-    .contain-create {
-        background-image: url('https://static.vecteezy.com/system/resources/thumbnails/015/287/575/original/purple-themed-particle-form-futuristic-neon-graphic-background-science-energy-3d-abstract-art-element-illustration-technology-artificial-intelligence-shape-theme-wallpaper-animation-free-video.jpg');
-        object-fit: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
+
+
+    .intro {
+        height: 100%;
         position: absolute;
         top: 57px;
         right: 0;
         left: 0;
-        bottom: 0;
-        overflow-y: scroll !important;
-        padding-left: 70px;
-        color: white;
-        font-weight: bold;
-        padding-bottom: 50px;
     }
 
-    table {
+    .contain-department {
+        background-image: url('https://static.vecteezy.com/system/resources/thumbnails/015/287/575/original/purple-themed-particle-form-futuristic-neon-graphic-background-science-energy-3d-abstract-art-element-illustration-technology-artificial-intelligence-shape-theme-wallpaper-animation-free-video.jpg');
+        object-fit: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        position: fixed;
+        top: 49px;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        overflow-y: scroll !important;
+        background-size: cover;
         color: white;
+        font-weight: bold;
+    }
+
+    .table-container {
+        overflow: auto;
+        padding-right: var(--bs-gutter-x,.75rem);
+        padding-left: var(--bs-gutter-x,.75rem);
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .table {
         background-color: azure;
         opacity: 85%;
         min-height: 400px;
@@ -34,6 +49,18 @@
         width: 91.5% !important;
         border-radius: 5px;
         text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .btnLink {
+        background-color: darkviolet !important;
+        color: white;
+    }
+
+    .button2 {
+        text-decoration: none;
+        color: #fff !important;
     }
 
     .button1 {
@@ -44,82 +71,105 @@
         margin: 10px 10px 10px 0px;
     }
 
-    .button2 {
-        background-color: darkviolet;
-        padding: 6px;
-        color: white;
-        border-radius: 10px;
-    }
-
     a:hover {
         color: red !important;
         margin: 3px;
     }
 </style>
 
-<div class="contain-create">
-    <div style="height:50px;"></div>
-    <h1>Index</h1>
+<section class="intro">
+    <div class="bg-image h-100 contain-department">
+        <div class="mask d-flex h-100">
 
-    <div style="height:10px;"></div>
-    <p>
-        <a class="button1" asp-controller="Idea" asp-action="ViewIdeas">View All Ideas</a>
-    </p>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Description)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ClosureDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.FinalClosureTime)
-                </th>
-                <th>
-                    Status
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Description)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ClosureDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FinalClosureTime)
-                    </td>
-                    <td>
-                        @if (item.IsClosed)
-                        {
-                            <span class="text-danger">Closed</span>
-                        }
-                        else
-                        {
-                            <span class="text-success">Openning</span>
-                        }
-                    </td>
-                    <td>
-                        <a class="button2" asp-controller="Idea" asp-action="Create" asp-route-submissionId="@item.Id">Add Idea</a> |
-                        <a class="button2" asp-controller="Idea" asp-action="ViewIdeas" asp-route-submissionId="@item.Id">View Idea</a>
+            <div class="container">
+                <div class="row table-container d-flex" style="padding-top: 80px;">
+                    <table class="table">
+                        <h1>Index</h1>
 
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div>
+                        <div style="height:20px;"></div>
+                        <p>
+                            <a style="text-decoration: none;" class="button1 mb-3" asp-controller="Idea" asp-action="ViewIdeas">View All Ideas</a>
+                        </p>
+                        <thead>
+                            <tr>
 
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ClosureDate)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.FinalClosureTime)
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+                                <th>
+                                </th>
+                                <th>
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.ClosureDate)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.FinalClosureTime)
+                                    </td>
+
+                                    <td>
+                                        @if (item.IsClosed)
+                                        {
+                                            <span class="text-danger">Closed</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-success">Openning</span>
+                                        }
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-inline m-0">
+                                            <li class="list-inline-item">
+                                                <button style="width: 80px;" class="btnLink btn btn-sm" type="button" data-toggle="tooltip" data-placement="top">
+                                                    <a class="button2" asp-controller="Idea" asp-action="Create" asp-route-submissionId="@item.Id">Add Idea</a>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline m-0">
+                                            <li class="list-inline-item">
+                                                <button style="width: 90px;" class="btnLink btn btn-sm" type="button" data-toggle="tooltip" data-placement="top">
+                                                    <a class="button2" asp-controller="Idea" asp-action="ViewIdeas" asp-route-id="@item.Id">View Idea</a>
+
+                                                </button>
+                                            </li>
+
+                                        </ul>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

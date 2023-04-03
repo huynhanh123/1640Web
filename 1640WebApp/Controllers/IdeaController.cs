@@ -532,6 +532,7 @@ namespace _1640WebApp.Controllers
             submission.Ideas.Add(idea);
             await _context.SaveChangesAsync();
 
+            /////na
             var coordinator = _context.Users
                 .Where(u => u.Email.Contains("coordinator") && u.DepartmentId == user.DepartmentId).ToList();
             var coordinatorEmail = coordinator.Select(u => u.Email);

@@ -11,6 +11,6 @@
     "\\1640WebApp\\Views\\Submission",
     "\\1640WebApp\\Views\\User"
   ],
-  "SelectedNode": "\\1640WebApp\\Controllers\\IdeaController.cs",
+  "SelectedNode": "\\1640WebApp\\Views\\Submission\\Index.cshtml",
   "PreviewInSolutionExplorer": false
 }
